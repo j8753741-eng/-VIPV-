@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carta — Hasta que volvamos a vernos</title>
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --panel:#0f0f14;
+      --neon:#b85cf6;
+      --muted:#bfc3d9;
+      --accent:#ffd6f0;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(184,92,246,0.08), transparent),
+                  radial-gradient(900px 400px at 90% 90%, rgba(255,214,240,0.04), transparent),
+                  var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .card{
+      width:100%;
+      max-width:820px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(184,92,246,0.12);
+      border-radius:18px;
+      padding:32px;
+      box-shadow: 0 10px 30px rgba(3,3,5,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+    .glow{
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(circle at 10% 20%, rgba(184,92,246,0.08), transparent 8%),
+                  radial-gradient(circle at 90% 80%, rgba(255,214,240,0.04), transparent 6%);
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .heart{
+      width:64px;
+      height:64px;
+      background:linear-gradient(135deg,#ff7bd4,#b85cf6);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      box-shadow: 0 6px 18px rgba(184,92,246,0.18);
+      transform:rotate(-8deg);
+    }
+    h1{
+      margin:0;
+      font-size:20px;
+      color:var(--accent);
+      letter-spacing:0.2px;
+    }
+    p.lead{
+      margin:6px 0 0 0;
+      color:#d7d9ee;
+      opacity:0.95;
+      font-size:13px;
+    }
+
+    .body{
+      margin-top:20px;
+      line-height:1.6;
+      font-size:16px;
+      color:var(--muted);
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:22px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .small{
+      font-size:13px;
+      opacity:0.85;
+      color:#c9cbe0;
+    }
+
+    .signature{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .from{
+      font-weight:600;
+      color:var(--accent);
+      font-size:15px;
+    }
+
+    .btn{
+      background:transparent;
+      border:1px solid rgba(184,92,246,0.18);
+      color:var(--accent);
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease;
+      font-size:14px;
+    }
+    .btn:hover{ transform:translateY(-3px); box-shadow:0 8px 24px rgba(184,92,246,0.12); }
+
+    footer{
+      margin-top:14px;
+      text-align:right;
+      font-size:12px;
+      color:#9fa3c6;
+    }
+
+    /* gentle animated confetti-like dots (purely decorative) */
+    .dots{
+      position:absolute;
+      right:-30px;
+      top:-20px;
+      width:260px;
+      height:260px;
+      pointer-events:none;
+      opacity:0.9;
+    }
+    .dot{
+      position:absolute;
+      width:8px;height:8px;border-radius:50%;
+      background:var(--neon);
+      opacity:0.14;
+      animation:float 6s infinite ease-in-out;
+    }
+    .dot.d2{ left:20%; top:70%; animation-duration:7s; transform:scale(.9); opacity:0.11;}
+    .dot.d3{ left:60%; top:12%; animation-duration:5.3s; transform:scale(1.2); opacity:0.09;}
+    .dot.d4{ left:85%; top:55%; animation-duration:8s; transform:scale(.8); opacity:0.07;}
+    .dot.d5{ left:50%; top:40%; animation-duration:6.8s; transform:scale(1.05); opacity:0.12;}
+    @keyframes float{
+      0%{ transform:translateY(0) translateX(0); }
+      50%{ transform:translateY(-16px) translateX(6px); }
+      100%{ transform:translateY(0) translateX(0); }
+    }
+
+    /* responsive */
+    @media (max-width:520px){
+      .card{ padding:20px; border-radius:14px; }
+      .heart{ width:54px; height:54px; font-size:22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="article" aria-label="Carta de amor">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="dots" aria-hidden="true">
+      <div class="dot"></div>
+      <div class="dot d2"></div>
+      <div class="dot d3"></div>
+      <div class="dot d4"></div>
+      <div class="dot d5"></div>
+    </div>
+
+    <header>
+      <div class="heart">💜</div>
+      <div>
+        <h1>Hasta que volvamos a vernos</h1>
+        <p class="lead">Una carta para el corazón — para leerla este viernes antes de despedirnos por un tiempo.</p>
+      </div>
+    </header>
+
+    <section class="body">
+      <p class="small">Mi amor,</p>
+
+      <p>Hemos aprovechado cada semana que el colegio nos regaló para vernos, reírnos y hacernos cómplices. Ahora que empiezan las vacaciones la realidad cambia un poco: yo me voy a Cartagena con mi papá en diciembre y tú te quedas con tu familia. Queda este viernes como nuestro último abrazo por un tiempo.</p>
+
+      <p>Quiero que sepas algo sencillo y verdadero: aunque estemos lejos y los encuentros queden en pausa, cada mensaje tuyo, cada llamada y cada recuerdo compartido me acompañarán. Lo que sentimos no se mide en días juntos sino en lo que nos queda cuando estamos separados: la paciencia, las ganas y la seguridad de que esto es real.</p>
+
+      <p>Prometo cuidarme, pensar en ti en las mañanas y buscar un momento cada día para decirte algo bonito. Prometo que este adiós temporal será solo una pausa, no el final. Vamos a convertir la distancia en pequeñas pruebas de cariño: fotos tontas, notas de voz inesperadas y planes para el reencuentro.</p>
+
+      <p>Si alguna vez te da miedo o la soledad pesa, recuerda que llevas algo de mí contigo: mi torpeza para contar chistes, mi forma de mirar las cosas y, sobre todo, mi cariño enorme por ti. Y cuando nos volvamos a ver —cuando ese día llegue— sabremos que cada minuto de espera habrá valido la pena.</p>
+
+      <div class="signature">
+        <div>
+          <div class="from">Con todo mi cariño,</div>
+          <div class="small">Tu persona favorita (y siempre en construcción)</div>
+        </div>
+        <div>
+          <button class="btn" onclick="navigator.clipboard?.writeText(document.getElementById('textoCarta').innerText).then(()=>alert('Carta copiada al portapapeles'), ()=>alert('No se pudo copiar'))">
+            Copiar carta
+          </button>
+        </div>
+      </div>
+
+      <p id="textoCarta" style="display:none;">
+        Mi amor,
+        Hemos aprovechado cada semana que el colegio nos regaló para vernos, reírnos y hacernos cómplices. Ahora que empiezan las vacaciones la realidad cambia un poco: yo me voy a Cartagena con mi papá en diciembre y tú te quedas con tu familia. Queda este viernes como nuestro último abrazo por un tiempo.
+        Quiero que sepas algo sencillo y verdadero: aunque estemos lejos y los encuentros queden en pausa, cada mensaje tuyo, cada llamada y cada recuerdo compartido me acompañarán. Lo que sentimos no se mide en días juntos sino en lo que nos queda cuando estamos separados: la paciencia, las ganas y la seguridad de que esto es real.
+        Prometo cuidarme, pensar en ti en las mañanas y buscar un momento cada día para decirte algo bonito. Prometo que este adiós temporal será solo una pausa, no el final. Vamos a convertir la distancia en pequeñas pruebas de cariño: fotos tontas, notas de voz inesperadas y planes para el reencuentro.
+        Si alguna vez te da miedo o la soledad pesa, recuerda que llevas algo de mí contigo: mi torpeza para contar chistes, mi forma de mirar las cosas y, sobre todo, mi cariño enorme por ti. Y cuando nos volvamos a ver —cuando ese día llegue— sabremos que cada minuto de espera habrá valido la pena.
+        Con todo mi cariño,
+        Tu persona favorita (y siempre en construcción)
+      </p>
+    </section>
+
+    <footer>
+      Este viernes: un abrazo más, una promesa y la mirada puesta en el próximo encuentro.
+    </footer>
+  </div>
+</body>
+</html>
